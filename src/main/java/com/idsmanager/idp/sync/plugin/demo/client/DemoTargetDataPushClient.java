@@ -134,8 +134,16 @@ public class DemoTargetDataPushClient implements TargetDataPushClient {
     public void destroy() {
     }
 
+    /**
+     * 所支持的属性描述
+     *
+     * @param syncObjectType 实体类型(User或Organization)
+     * @return List<AttributeDescriptor> 属性描述列表
+     */
+    private DemoTargetDefaultAttributeDefiner attribute = new DemoTargetDefaultAttributeDefiner();
+
     @Override
     public Collection<AttributeDescriptor> listSupportedAttributes(SyncObjectType syncObjectType) {
-        return null;
+        return attribute.define(syncObjectType);
     }
 }
