@@ -1,6 +1,5 @@
 package com.idsmanager.idp.sync.plugin.demo;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.idsmanager.idp.sync.InvalidConfigException;
 import com.idsmanager.idp.sync.MajorType;
@@ -10,23 +9,20 @@ import com.idsmanager.idp.sync.core.infrastructure.ConnectionMetadataImpl;
 import com.idsmanager.idp.sync.core.infrastructure.ConnectionTestResult;
 import com.idsmanager.idp.sync.core.infrastructure.mapping.AttributeDescriptor;
 import com.idsmanager.idp.sync.core.infrastructure.mapping.AttributeSetter;
-import com.idsmanager.idp.sync.core.infrastructure.source.SourceDataPullClient;
 import com.idsmanager.idp.sync.core.infrastructure.target.TargetConnectionConfiguration;
 import com.idsmanager.idp.sync.core.infrastructure.target.TargetConnectionMetadata;
 import com.idsmanager.idp.sync.core.infrastructure.target.TargetConnectionPlugin;
 import com.idsmanager.idp.sync.core.infrastructure.target.TargetDataPushClient;
 import com.idsmanager.idp.sync.plugin.demo.attribute.DemoAttributeSetter;
 import com.idsmanager.idp.sync.plugin.demo.attribute.DemoTargetDefaultAttributeDefiner;
-import com.idsmanager.idp.sync.plugin.demo.business.source.DemoSourceClientConfiguration;
 import com.idsmanager.idp.sync.plugin.demo.business.target.DemoTargetClientConfiguration;
+import com.idsmanager.idp.sync.plugin.demo.client.DemoTargetDataPushClient;
 import com.idsmanager.micro.commons.web.filter.RIDHolder;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 2021/12/9 11:14
@@ -43,7 +39,7 @@ public class DemoTargetConnectionMetadata extends ConnectionMetadataImpl impleme
     private static final Logger LOG = LoggerFactory.getLogger(DemoTargetConnectionMetadata.class);
 
     /**
-     * 自定义主类型和子类型
+     * TODO 自定义主类型和子类型
      * 一般情况下，定义子类型即可，注意，子类型需要以 _SCHEMA 结尾，才能正常获取到表单json信息
      */
     public DemoTargetConnectionMetadata() {
@@ -117,7 +113,6 @@ public class DemoTargetConnectionMetadata extends ConnectionMetadataImpl impleme
 
     /**
      * //TODO 解析前端传递的配置信息(前端将整个数据源配置对象转为了json字符串传到后端，后端需要自己解析得到具体参数值)
-     *
      **/
     private DemoTargetClientConfiguration parseJsonConfig(String jsonConfig) throws InvalidConfigException {
         JSONObject json = doValidate(jsonConfig);

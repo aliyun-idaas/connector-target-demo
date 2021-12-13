@@ -10,6 +10,7 @@ import com.idsmanager.idp.sync.core.infrastructure.mapping.AttributeDescriptor;
 import com.idsmanager.idp.sync.core.infrastructure.relation.DataRelation;
 import com.idsmanager.idp.sync.core.infrastructure.target.TargetDataItem;
 import com.idsmanager.idp.sync.core.infrastructure.target.TargetDataPushClient;
+import com.idsmanager.idp.sync.plugin.demo.business.target.DemoTargetClientConfiguration;
 import com.idsmanager.idp.sync.plugin.demo.entity.target.DemoTargetAccountEntity;
 import com.idsmanager.idp.sync.plugin.demo.entity.target.DemoTargetBaseEntity;
 import com.idsmanager.idp.sync.plugin.demo.entity.target.DemoTargetOrganizationEntity;
