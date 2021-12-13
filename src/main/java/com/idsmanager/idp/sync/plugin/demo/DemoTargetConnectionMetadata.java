@@ -52,7 +52,18 @@ public class DemoTargetConnectionMetadata extends ConnectionMetadataImpl impleme
 
     @Override
     public TargetDataPushClient build(TargetConnectionConfiguration configuration) throws InvalidConfigException {
-        return null;
+        return new DemoTargetDataPushClient(convert(configuration));
+    }
+
+    private DemoTargetClientConfiguration convert(TargetConnectionConfiguration configuration) throws InvalidConfigException {
+        if (configuration instanceof DemoTargetClientConfiguration) {
+            return (DemoTargetClientConfiguration) configuration;
+        }
+        DemoTargetClientConfiguration demoTargetClientConfiguration = parseJsonConfig(configuration.getJsonConfig());
+        demoTargetClientConfiguration.setUuid(configuration.getUuid());
+        demoTargetClientConfiguration.setId(configuration.getId());
+        demoTargetClientConfiguration.setName(configuration.getName());
+        return demoTargetClientConfiguration;
     }
 
     @Override

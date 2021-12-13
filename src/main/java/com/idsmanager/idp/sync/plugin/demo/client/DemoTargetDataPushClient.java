@@ -32,6 +32,11 @@ public class DemoTargetDataPushClient implements TargetDataPushClient {
 
     private static Logger LOG = LoggerFactory.getLogger(DemoTargetDataPushClient.class);
 
+    private DemoTargetClientConfiguration configuration;
+
+    public DemoTargetDataPushClient(DemoTargetClientConfiguration configuration) {
+        this.configuration = configuration;
+    }
 
     /**
      * TODO 该接口用于实现真正的向目标推送数据
