@@ -10,7 +10,9 @@ import com.idsmanager.idp.sync.core.infrastructure.mapping.AttributeDescriptor;
 import com.idsmanager.idp.sync.core.infrastructure.relation.DataRelation;
 import com.idsmanager.idp.sync.core.infrastructure.target.TargetDataItem;
 import com.idsmanager.idp.sync.core.infrastructure.target.TargetDataPushClient;
+import com.idsmanager.idp.sync.plugin.demo.attribute.DemoTargetDefaultAttributeDefiner;
 import com.idsmanager.idp.sync.plugin.demo.business.target.DemoTargetClientConfiguration;
+import com.idsmanager.idp.sync.plugin.demo.business.target.DemoTargetPushHandler;
 import com.idsmanager.idp.sync.plugin.demo.entity.target.DemoTargetAccountEntity;
 import com.idsmanager.idp.sync.plugin.demo.entity.target.DemoTargetBaseEntity;
 import com.idsmanager.idp.sync.plugin.demo.entity.target.DemoTargetOrganizationEntity;
@@ -34,6 +36,8 @@ public class DemoTargetDataPushClient implements TargetDataPushClient {
     private static Logger LOG = LoggerFactory.getLogger(DemoTargetDataPushClient.class);
 
     private DemoTargetClientConfiguration configuration;
+
+    private DemoTargetPushHandler demoTargetPushHandler;
 
     public DemoTargetDataPushClient(DemoTargetClientConfiguration configuration) {
         this.configuration = configuration;
@@ -65,6 +69,12 @@ public class DemoTargetDataPushClient implements TargetDataPushClient {
         boolean checkObjectExistBeforeSync = context.getTask().isCheckModel();
 
         //TODO 具体的推送实现，可另外使用handler
+        if(SyncOperationType.DELETE == item.getSyncOperationType()){
+            // ToDO 删除
+        }else if (SyncOperationType.CREATE == item.getSyncOperationType()){
+            // ToDo 新增
+            demoTargetPushHandler.create(item, context, relation);
+        }
 
         return null;
     }
@@ -104,7 +114,7 @@ public class DemoTargetDataPushClient implements TargetDataPushClient {
      */
     @Override
     public boolean support(SyncObjectType type) {
-        return type == SyncObjectType.ORGANIZATION || type == SyncObjectType.USER;
+        return type == SyncObjectType.ORGANIZATION || type == SyncObjectType.USER ;
     }
 
     /**

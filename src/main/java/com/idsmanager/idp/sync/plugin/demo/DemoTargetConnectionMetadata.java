@@ -15,6 +15,7 @@ import com.idsmanager.idp.sync.core.infrastructure.target.TargetConnectionPlugin
 import com.idsmanager.idp.sync.core.infrastructure.target.TargetDataPushClient;
 import com.idsmanager.idp.sync.plugin.demo.attribute.DemoAttributeSetter;
 import com.idsmanager.idp.sync.plugin.demo.attribute.DemoTargetDefaultAttributeDefiner;
+import com.idsmanager.idp.sync.plugin.demo.business.MetaBaseConstant;
 import com.idsmanager.idp.sync.plugin.demo.business.target.DemoTargetClientConfiguration;
 import com.idsmanager.idp.sync.plugin.demo.client.DemoTargetDataPushClient;
 import com.idsmanager.micro.commons.web.filter.RIDHolder;
@@ -43,7 +44,8 @@ public class DemoTargetConnectionMetadata extends ConnectionMetadataImpl impleme
      * 一般情况下，定义子类型即可，注意，子类型需要以 _SCHEMA 结尾，才能正常获取到表单json信息
      */
     public DemoTargetConnectionMetadata() {
-        super(MajorType.APP_STANDARD.name(), MinorType.DEMO_SCHEMA.name());
+        super(MajorType.APP_STANDARD.name(), MajorType.APP_STANDARD.cnLabel,
+                MetaBaseConstant.MINORTYPE_NAME, MetaBaseConstant.MINORTYPE_NAME_CN);
     }
 
     @Override
@@ -142,5 +144,20 @@ public class DemoTargetConnectionMetadata extends ConnectionMetadataImpl impleme
     @Override
     public Collection<AttributeDescriptor> listDefaultSupportedAttributes(SyncObjectType syncObjectType) {
         return attribute.define(syncObjectType);
+    }
+
+    @Override
+    public String description() {
+        return null;
+    }
+
+    @Override
+    public String documentUrl() {
+        return null;
+    }
+
+    @Override
+    public String icon() {
+        return null;
     }
 }

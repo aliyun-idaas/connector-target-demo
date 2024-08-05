@@ -16,7 +16,17 @@ public class DemoTargetAccountEntity extends DemoTargetBaseEntity implements Tar
     /**
      * 用户id
      **/
-    private String userId;
+    private String userCode;
+
+    private String parentOUId;
+
+    private String userName;
+
+    private String mobile;
+
+    private String description;
+
+    private String accountId;
 
     /**
      * TODO 唯一标识字段
@@ -79,11 +89,51 @@ public class DemoTargetAccountEntity extends DemoTargetBaseEntity implements Tar
         return false;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getParentOUId() {
+        return parentOUId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setParentOUId(String parentOUId) {
+        this.parentOUId = parentOUId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 }

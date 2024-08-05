@@ -37,19 +37,69 @@ public class DemoTargetDefaultAttributeDefiner {
             AttributeDescriptor userName = new AttributeDescriptor("userName", "用户名称", "用户名称");
             attributeDescriptors.add(userName);
 
+            //描述
+            AttributeDescriptor description = new AttributeDescriptor("description", "描述", "描述");
+            attributeDescriptors.add(description);
+
+            //账号
+            AttributeDescriptor accountId = new AttributeDescriptor("accountId", "账号", "账号");
+            attributeDescriptors.add(accountId);
+
+            //描述
+            AttributeDescriptor mobile = new AttributeDescriptor("mobile", "手机号码", "手机号码");
+            attributeDescriptors.add(mobile);
+
 
         }
 
         //组织(即部门)
         if (SyncObjectType.ORGANIZATION.equals(syncObjectType)) {
             //TODO: 组织同上
-            //部门主键
-            AttributeDescriptor pkDept = new AttributeDescriptor("pkDept", "部门主键", "部门主键");
+            //部门名称
+            AttributeDescriptor pkDept = new AttributeDescriptor("name", "部门名称", "部门名称");
             attributeDescriptors.add(pkDept);
 
-            //组织、部门common主键
-            AttributeDescriptor externalId = new AttributeDescriptor("externalId", "组织、部门common主键", "组织、部门common主键");
-            attributeDescriptors.add(externalId);
+            //组织、部门唯一主键
+            AttributeDescriptor deptId = new AttributeDescriptor("deptId", "组织、部门唯一主键", "组织、部门唯一主键");
+            attributeDescriptors.add(deptId);
+
+            //部门名称
+            AttributeDescriptor parentId = new AttributeDescriptor("parentId", "部门所属上级id", "部门所属上级id");
+            attributeDescriptors.add(parentId);
+
+            //部门名称
+            AttributeDescriptor order = new AttributeDescriptor("order", "排序号", "排序号");
+            attributeDescriptors.add(order);
+
+
+        }
+
+        //组群
+        if (SyncObjectType.GROUP.equals(syncObjectType)) {
+            //TODO: 组群同上
+            //组唯一ID
+            AttributeDescriptor roleId = new AttributeDescriptor("roleId", "组唯一ID", "组唯一ID");
+            attributeDescriptors.add(roleId);
+
+            //组名称
+            AttributeDescriptor roleName = new AttributeDescriptor("roleName", "组名称", "组名称");
+            attributeDescriptors.add(roleName);
+
+            //组所属组织唯一ID
+            AttributeDescriptor groupId = new AttributeDescriptor("groupId", "组所属组织唯一ID", "组所属组织唯一ID");
+            attributeDescriptors.add(groupId);
+
+            //组存量成员列表
+            AttributeDescriptor members = new AttributeDescriptor("members", "组存量成员列表", "组存量成员列表");
+            attributeDescriptors.add(members);
+
+            //组添加成员列表
+            AttributeDescriptor addMembers = new AttributeDescriptor("addMembers", "组添加成员列表", "组添加成员列表");
+            attributeDescriptors.add(addMembers);
+
+            //组移除成员列表
+            AttributeDescriptor deleteMembers = new AttributeDescriptor("deleteMembers", "组移除成员列表", "组移除成员列表");
+            attributeDescriptors.add(deleteMembers);
 
 
         }
